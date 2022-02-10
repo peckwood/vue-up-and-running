@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>The console will show an error</p>
+	<p>First, because the inside element hidden using v-if isn’t going to be displayed, Vue
+		doesn’t try to generate the HTML; this isn’t the case with the v-show example. This
+		means that v-if is better for hiding stuff that hasn’t loaded yet.</p>
+	<div id="app">
+		<div v-show="user">
+			<p>User name: {{user.name}}</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				user: undefined
+			}
+		});
+	</script>
+</body>
+
+</html>
