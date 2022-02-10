@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div id="app">
+		<ul class="js-items">
+			<li v-if="!items.length">Sorry, there are no items</li>
+			<li v-for="item in items" :class="{ 'is-blue': item.includes('blue') }">
+				{{ item }}
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '.js-items',
+			data: {
+				items: ['blue', 'green', 'red']
+			}
+		});
+	</script>
+</body>
+
+</html>
