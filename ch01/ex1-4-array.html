@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<p>The first dog is {{ dogs[0] }}</p>
+		<p>The second dog is {{ dogs[1] }}</p>
+		<p>The dogs are {{ dogs }}</p>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				dogs: ['Rex', 'Rover', 'Henrie', 'Alan']
+			}
+		});
+	</script>
+</body>
+</html>
