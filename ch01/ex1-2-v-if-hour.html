@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<p> download a list of items from an Ajax resource and display them on the page.</p>
+		<p> current hours: {{ hours }}</p>
+		<p v-if="hours < 12"> Good morining!</p>
+		<p v-else-if="hours < 18"> Good afternoon!</p>
+		<p v-else> Good evening!</p>
+	</div>
+
+	<script type="text/javascript">
+		// var hours = new Date().getHours();
+		var app = new Vue({
+			el: '#app',
+			data: {
+				hours: new Date().getHours()
+			}
+		});
+	</script>
+</body>
+
+</html>
