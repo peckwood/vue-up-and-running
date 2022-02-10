@@ -22,8 +22,15 @@
 		var app = new Vue({
 			el: '.js-items',
 			data: {
-				items: ['blue', 'green', 'red']
-			}
+				items: []
+			},
+			created() {
+				fetch('https://raw.githubusercontent.com/peckwood/vue-up-and-running/master/ch01/items.json')
+					.then((res) => res.json())
+					.then((data) => {
+						this.item = data.items;
+					})
+			},
 		});
 	</script>
 </body>

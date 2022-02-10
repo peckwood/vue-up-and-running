@@ -1,1 +1,7 @@
-['blue', 'green', 'red']
+{
+  "items": [
+    "blue",
+    "green",
+    "red"
+  ]
+}
