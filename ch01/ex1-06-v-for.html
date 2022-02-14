@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<p>dogs:</p>
+		<ul v-for="dog in dogs">
+			<li>{{ dog }}</li>
+		</ul>
+
+		<br />
+
+		<p>Note the order of the arguments: it’s (value, key), not the other way around.</p>
+		<p>average rent:</p>
+		<ul v-for="(rent, city) in averageRent">
+			<li>{{ city }}: {{ rent }}</li>
+		</ul>
+
+		<br />
+
+		<p>traverse numbers</p>
+		<ul v-for="number in 3">
+			<li>{{ number }}</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				dogs: ['Rex', 'Rover', 'Henrie', 'Alan'],
+				averageRent: {
+					london: 1650,
+					paris: 1730,
+					NYC: 3680
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<p>{{ seconds }} seconds have elapsed since you opened the page.</p>
+		<button :disabled="buttonDisabled">Test button</button>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				seconds: 0,
+				buttonDisabled: true
+			},
+			created() {
+				setInterval(() => {
+					this.seconds++;
+					this.buttonDisabled = !this.buttonDisabled;
+				}, 1000);
+			}
+		});
+	</script>
+</body>
+
+</html>

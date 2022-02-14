@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>filters are great for making simple display changes to
+		strings and numbers:</p>
+	<div id="app">
+		<p>Product one cost: {{productOneCost  | formatCost('¥')}}</p>
+		<p>Product two cost: {{productTwoCost  | formatCost('¥')}}</p>
+		<p>Product three cost: {{productThreeCost  | formatCost('¥')}}</p>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				productOneCost: 9981.9,
+				productTwoCost: 2399.4,
+				productThreeCost: 5300.5
+			},
+			filters: {
+				formatCost(value, symbol){
+					return symbol + (value / 100).toFixed(2);
+				},
+				round(value){
+					return Math.round(value);
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

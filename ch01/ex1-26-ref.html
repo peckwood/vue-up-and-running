@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。
+		如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例：</p>
+	<p>可以使用app.$refs.p来访问p结点</p>
+	<div id="app">
+		<p ref="p">hello</p>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				productOneCost: 9981.9,
+				productTwoCost: 2399.4,
+				productThreeCost: 5300.5
+			},
+			filters: {
+				formatCost(value, symbol) {
+					return symbol + (value / 100).toFixed(2);
+				},
+				round(value) {
+					return Math.round(value);
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

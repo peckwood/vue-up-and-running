@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>Check the console</p>
+	<div id="app">
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+			},
+			beforeCreate() {
+				console.log("beforeCreate")
+			},
+			created() {
+				console.log("created");
+			},
+			mounted() {
+				console.log("mounted, element might not have been added to the DOM yet");
+				this.$nextTick(()=>{
+					console.log("Element has definitely been added to the DOM now");
+				});
+			},
+		});
+	</script>
+</body>
+
+</html>

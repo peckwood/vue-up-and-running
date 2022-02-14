@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<h2>Adding new properties to an object</h2>
+	<div id="app">
+		<p>{{ dogs }}</p>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				dogs: ['Rex', 'Rover', 'Henrie', 'Alan']
+			}
+		});
+		function delay(time) {
+			return new Promise(resolve => setTimeout(resolve, time));
+		}
+		delay(1000).then(() =>
+			Vue.set(app.dogs, 2, 'Henry')
+		);
+		delay(2000).then(() =>
+			app.dogs.splice(2)
+		);
+		delay(3000).then(() =>
+			app.dogs[0] = 'Red'
+		);
+	</script>
+</body>
+
+</html>

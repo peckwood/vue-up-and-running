@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div id="app">
+		<p>For computed prooperties, sed. the code will
+			be run again only when a dependency of the method changes(even if change to same value)</p>
+		<p>Run Vue.set(app.numbers, 0, 4) and check console.log</p>
+		<p>Run app.numberTotal and check console.log (no recalculation)</p>
+		<p>total: {{ numberTotal }}</p>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				numbers: [-4, 3, 2, 8, -9, 1]
+			},
+			computed: {
+				numberTotal(){
+					console.log('calculating...')
+					return this.numbers.reduce((sum, val) => sum + val);
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

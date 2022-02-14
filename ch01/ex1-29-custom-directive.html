@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div id="app">
+		<h1 v-purple>Purple text</h1>
+		<p v-blink>I am blinking!</p>
+		I am focused: <input v-focus />
+	</div>
+	<script type="text/javascript">
+		Vue.directive('purple', function (el) {
+			el.style.color = 'purple'
+		});
+		Vue.directive('blink', {
+			bind(el) {
+				let isVisible = true;
+				setInterval(() => {
+					isVisible = !isVisible;
+					el.style.visibility = isVisible ? 'visible' : 'hidden';
+				}, 1000);
+			}
+		});
+		// Register a global custom directive called `v-focus`
+		Vue.directive('focus', {
+			// When the bound element is inserted into the DOM...
+			inserted: function (el) {
+				// Focus the element
+				el.focus()
+			}
+		});
+
+		var app = new Vue({
+			el: '#app',
+			data: {}
+		});
+	</script>
+</body>
+
+</html>

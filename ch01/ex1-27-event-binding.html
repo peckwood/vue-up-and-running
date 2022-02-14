@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div id="app">
+		<!-- You can access the event when writing code inline, too, as the $event variable -->
+		<button @click="counter++;this.console.log($event)">Click me!</button>
+		<p>{{ counter }}</p>
+
+		<button @click="increaseCounter1">Click me!</button>
+		<p>{{ counter1 }}</p>
+
+		<!-- Prevent the default action of the event from happening -->
+		<a @click.prevent href="https://www.baidu.com">baidu.com</a>
+
+		<br />
+
+		<!-- the event listener be triggered only the first time the event is fired,  -->
+		the event listener be triggered only the first time the event is fired <button @click.once.prevent="this.console.log('Once')">button</button>
+
+		<form @keyup.esc="this.console.log('enter pressed!')">
+			<label>Hightlight me and press ESC!</label>
+			<input type="text"/>
+		</form>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				counter: 0,
+				counter1: 0
+			},
+			methods: {
+				increaseCounter1(eventObj) {
+					this.counter1++;
+				}
+			},
+		});
+	</script>
+</body>
+
+</html>

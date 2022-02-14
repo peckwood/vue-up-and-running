@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>When watching an object, you might want to watch the entire object for changes, not
+		just the property. By default, the watcher won’t fire if you’re watching formData and
+		you modify formData.username; it will fire only if you replace the entire formData
+		property.</p>
+	<div id="app">
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				formData: {
+					name: undefined
+				}
+			},
+			watch: {
+				formData: {
+					handler(newValue, oldValue) {
+						// Note: `newValue` will be equal to `oldValue` here
+						// on nested mutations as long as the object itself
+						// hasn't been replaced.
+						console.log(newValue, oldValue);
+					},
+					deep: true
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

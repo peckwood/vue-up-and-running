@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<input v-model="inputText" value="unused initial value" />
+		<br />
+		input text: {{ inputText}}
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				inputText: ''
+			}
+		});
+	</script>
+</body>
+
+</html>

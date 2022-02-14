@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<h2>Adding new properties to an object</h2>
+	<div id="app">
+		<p>username: {{ formData.username }}</p>
+		<p>real name: {{ formData.realname }}</p>
+
+		<br />
+
+		<p>While the formData.username property will be reactive and respond to changes, the formData.name property will not</p>
+		<p>Try with <br /> app.formData.realname = 'Black';</p>
+
+		<br />
+
+		<p>Finally, Vue provides a function called Vue.set() that you can use to set reactive
+			properties:
+			Vue.set(vm.formData, 'name', 'Some User');<br />
+			When inside a component, this function is also available as this.$set</p>
+		<p>Try with <br /> app.formData.nickname = 'Claymore';</p>
+		<p>nick name: {{ formData.nickname }}</p>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				formData: {
+					username: 'someuser'
+				}
+			},
+		});
+		app.formData.realname = 'Jack' ;
+		Vue.set(app.formData, 'nickname', 'Noob master');
+	</script>
+</body>
+
+</html>
