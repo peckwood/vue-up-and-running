@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div id="app">
+		<p>You can then use the component the same way it was used in the previous example in
+			the template, but you don’t need to specify it in the components object anymore; it’s
+			available everywhere</p>
+		<custom-button></custom-button>
+	</div>
+	<script type="text/javascript">
+		const CustomButton = {
+			template: '<button>Custom Button</button>'
+		}
+		var app = new Vue({
+			el: '#app',
+			components: {
+				CustomButton
+			}
+		});
+	</script>
+</body>
+
+</html>

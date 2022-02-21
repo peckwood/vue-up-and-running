@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div id="app">
+		<p>You might have noticed one subtle difference between a component and the Vue
+			instance: whereas the data property on your Vue instance is an object, the data 
+			property on components is a function. This is because you can use a component multiple
+			times on the same page, and you probably don’t want them sharing a data object</p>
+		<positive-numbers></positive-numbers>
+	</div>
+	<script type="text/javascript">
+		Vue.component('positive-numbers', {
+			template: '<p>{{ positiveNumbers.length }} positive numbers</p>',
+			data() {
+				return {
+					numbers: [-5, 0, 2, -1, 1, 0.5]
+				}
+			},
+			computed: {
+				positiveNumbers() {
+					return this.numbers.filter((number) => number >= 0);
+				}
+			}
+		});
+		var app = new Vue({
+			el: '#app'
+		});
+
+	</script>
+</body>
+
+</html>
