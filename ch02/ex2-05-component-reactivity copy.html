@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>Using v-bind is required when passing in anything other than
+		strings. </p>
+	<div id="app">
+		<display-number :number="gobalNumber"></display-number>
+	</div>
+	<script type="text/javascript">
+		Vue.component('display-number', {
+			template: '<p>The number is {{ number }}</p>',
+			// notice props is an array
+			props: {
+				number: {
+					required: true,
+					type: Number
+				}
+			}
+		});
+		var app = new Vue({
+			el: '#app',
+			data:{
+				gobalNumber: 1
+			},
+			created() {
+				setInterval(() => {
+					this.gobalNumber++;
+				}, 1000)
+			},
+		});
+
+	</script>
+</body>
+
+</html>

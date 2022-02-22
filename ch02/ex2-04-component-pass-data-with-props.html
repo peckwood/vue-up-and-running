@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div id="app">
+		<p>you. Props specified as kebab case in your HTML are
+			automatically converted to camel case in your component: backgroundColor</p>
+		<color-preview color="red">Hello</color-preview>
+	</div>
+	<script type="text/javascript">
+		Vue.component('color-preview', {
+			// works without class="color-preview", too
+			template: '<p class="color-preview" :style="style">Hi</p>',
+			// notice props is an array
+			props: ['color'],
+			computed: {
+				//notice this.color
+				style() {
+					return {backgroundColor: this.color}
+				}
+			}
+		});
+		var app = new Vue({
+			el: '#app'
+		});
+
+	</script>
+</body>
+
+</html>
