@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>If you just want to update the value passed in as a prop and don’t care about updating
+		the value on the parent component, you can copy the value from the prop into the
+		data object by referring to this in the initial data function</p>
+	<p>Changing app.globalNumber won't affect number</p>
+	<div id="app">
+		<display-number :initial-number="gobalNumber"></display-number>
+	</div>
+	<script type="text/javascript">
+		Vue.component('display-number', {
+			template: `
+				<div>
+					<p>The number is {{ number }}</p>
+					<button @click="number++">add 1 now!</button>
+				</div>
+				`,
+			props: {
+				initialNumber: {
+					required: true,
+					type: Number
+				}
+			},
+			data() {
+				return {
+					number: this.initialNumber
+				}
+			},
+			mounted() {
+				setInterval(() => {
+					this.number++
+				}, 1000);
+			}
+		});
+		var app = new Vue({
+			el: '#app',
+			data: {
+				gobalNumber: 5
+			}
+		});
+
+	</script>
+</body>
+
+</html>

@@ -11,6 +11,9 @@
 	<p>Using v-bind is required when passing in anything other than
 		strings. </p>
 	<div id="app">
+		<p>if you change number directly with @click="number++", you will get error: </p>
+		<p>Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "number"</p>
+			<p>So you should use $emit instead</p>
 		<display-number :number.sync="gobalNumber"></display-number>
 	</div>
 	<script type="text/javascript">
@@ -18,14 +21,18 @@
 			template: `
 				<div>
 					<p>The number is {{ number }}</p>
-					<button @click="number++">minus 1</button>
+					<button @click="addUpNumber">add 1 now!</button>
 				</div>
 				`,
-			// notice props is an array
 			props: {
 				number: {
 					required: true,
 					type: Number
+				}
+			},
+			methods: {
+				addUpNumber(){
+					this.$emit('update:number', this.number + 1);
 				}
 			}
 		});
@@ -38,7 +45,7 @@
 				setInterval(() => {
 					this.gobalNumber++;
 				}, 1000)
-			},
+			}
 		});
 
 	</script>

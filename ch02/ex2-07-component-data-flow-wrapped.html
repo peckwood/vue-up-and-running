@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>In some cases, it might be beneficial to wrap the emit logic in a computed property</p>
+	<div id="app">
+		<display-number :number.sync="gobalNumber"></display-number>
+	</div>
+	<script type="text/javascript">
+		Vue.component('display-number', {
+			template: `
+				<div>
+					<p>The number is {{ localNumber }}</p>
+					<button @click="localNumber = localNumber + 1">add 1 now!</button>
+				</div>
+				`,
+			props: {
+				number: {
+					required: true,
+					type: Number
+				}
+			},
+			computed: {
+				localNumber: {
+					get() {
+						return this.number
+					},
+					set(newValue) {
+						this.$emit('update:number', newValue);
+					}
+				}
+			},
+			mounted() {
+				setInterval(() => {
+					this.localNumber++
+				}, 1000);
+			}
+		});
+		var app = new Vue({
+			el: '#app',
+			data: {
+				gobalNumber: 5
+			}
+		});
+
+	</script>
+</body>
+
+</html>
