@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<blog-post :author="author1">
+			<h2 slot="header">Awesome Blog!</h2>
+			<p>Blog content</p>
+			<p>More blog content</p>
+		</blog-post>
+	</div>
+	<script type="text/javascript">
+		Vue.component('blog-post', {
+			template: `
+				<section>
+					<header>
+						<slot name='header'></slot>
+						<p>Post by {{ author.name }}</p>
+					</header>
+					<main>
+						<slot></slot>	
+					</main>
+				</section>
+			`,
+			props: {
+				author: {
+					required: false,
+					type: Object
+				}
+
+			}
+		});
+		var app = new Vue({
+			el: '#app',
+			data: {
+				author1: {
+					name: 'Raiden'
+				}
+			}
+		});
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>You can pass HTML into components using slots</p>
+	<div id="app">
+		<custom-button>Press me!</custom-button>
+	</div>
+	<script type="text/javascript">
+		Vue.component('custom-button', {
+			template: `<button><slot>Default button text</slot></button>`,
+			props: {
+				value: {
+					required: false,
+					type: String
+				}
+			},
+			methods:{
+				handleInput(e){
+					const value = e.target.value.toLowerCase();
+					if(value !== e.target.value){
+						e.target.value = value;
+					}
+					this.$emit('input', value);
+					
+				}
+			}
+		});
+		var app = new Vue({
+			el: '#app',
+			data: {
+				username: 'username123'
+			}
+		});
+
+	</script>
+</body>
+
+</html>

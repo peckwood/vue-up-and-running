@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p>By default, it shows the lastname of author</p>
+	<p>We wish to show firstname, instead</p>
+	<p>We didn't follow textbook, but followed https://v2.vuejs.org/v2/guide/components-slots.html#Scoped-Slots</p>
+
+	<p>Note that the abbreviated syntax for default slot cannot be mixed with named slots, as it would lead to scope ambiguity:</p>
+	<p>Whenever there are multiple slots, use the full template based syntax for all slots:</p>
+	<div id="app">
+		<current-user :user="user1">
+			<template  v-slot:default="slotProps">
+				{{slotProps.user.firstname}}
+			</template>
+		</current-user>
+		<hr>
+		<!-- Abbreviated Syntax -->
+		<current-user :user="user1" v-slot:default="slotProps">
+			{{slotProps.user.firstname}}
+		</current-user>
+		<hr>
+		<current-user :user="user1" >
+		</current-user>
+	</div>
+	<script type="text/javascript">
+		Vue.component('current-user', {
+			template: `
+				<span>
+					<slot :user="user">{{user.lastname}}</slot>
+				</span>
+			`,
+			props: {
+				user: {
+					required: false,
+					type: Object
+				}
+
+			}
+		});
+		var app = new Vue({
+			el: '#app',
+			data: {
+				user1: {
+					firstname: 'Raiden',
+					lastname: 'Zhang'
+				}
+			}
+		});
+
+	</script>
+</body>
+
+</html>

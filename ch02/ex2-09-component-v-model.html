@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+	<p></p>
+	<div id="app">
+		<input-username v-model:value="username"></input-username>
+		<p>{{ username }}</p>
+	</div>
+	<script type="text/javascript">
+		Vue.component('input-username', {
+			template: `
+				<div>
+					<input :value="value" @input="handleInput" />
+				</div>
+				`,
+			props: {
+				value: {
+					required: true,
+					type: String
+				}
+			},
+			methods:{
+				handleInput(e){
+					const value = e.target.value.toLowerCase();
+					if(value !== e.target.value){
+						e.target.value = value;
+					}
+					this.$emit('input', value);
+					
+				}
+			}
+		});
+		var app = new Vue({
+			el: '#app',
+			data: {
+				username: 'username123'
+			}
+		});
+
+	</script>
+</body>
+
+</html>
